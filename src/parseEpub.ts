@@ -56,7 +56,7 @@ const parseMetadata = (metadata: GeneralObject[]) => {
 }
 
 export class Epub {
-  private _zip: any // nodeZip instance
+  _zip: any // nodeZip instance
   private _opfPath?: string
   private _root?: string
   private _content?: GeneralObject
@@ -101,7 +101,7 @@ export class Epub {
     return xmlToJs(xml)
   }
 
-  private async _getOpfPath() {
+  async _getOpfPath() {
     const container = await this._resolveXMLAsJsObject('/META-INF/container.xml')
     const opfPath = container.container.rootfiles[0].rootfile[0]['$']['full-path']
     return opfPath
